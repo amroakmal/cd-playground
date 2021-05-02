@@ -32,11 +32,13 @@ jobs:
           # M3_VERSION: ${{needs.prepare.outputs.version}}
           M3_DEPLOYMENT_PATH: deploy
           TEMP_DIR: temp
-          # M3_NAMESPACE: m3ntorshipcom-dev
+          M3_NAMESPACE: pickify-namespace
           # M3_PROJECT: m3ntorshipcom
           # M3_COMPONENET: fullstack
           # M3_ENVIRONMENT: dev
           M3_REPLICAS: '3'
+          POSTS_SERVICE_DNS: amr-posts
+          VOTES_SERVICE_DNS: amr-votes
           # M3_PORT_FRONTEND: '3000'
           # M3_PORT_BACKEND: '1337'
           # M3_SHA: ${{needs.prepare.outputs.sha}}

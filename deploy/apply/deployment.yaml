@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-service-name-for-posts-service
-  namespace: pickify
+  namespace: "{{{M3_NAMESPACE}}}"
   labels:
     app: deployment-service-label-for-posts-service
 spec:
@@ -32,7 +32,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deployment-service-name-for-votes-service
-  namespace: pickify
+  namespace: "{{{M3_NAMESPACE}}}"
   labels:
     app: deployment-service-label-for-votes-service
 spec:
