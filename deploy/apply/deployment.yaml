@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: posts-service-pod-container-name
-        image: 0024610/simple-node-app-docker-hub-image:01
+        image: "{{{DOCKER_IMAGE}}}"
         command: ["node"]
         args: ["src/index.js"]
         env:
@@ -51,7 +51,7 @@ spec:
     spec:
       containers:
       - name: votes-service-pod-container-name
-        image: 0024610/simple-node-app-docker-hub-image:01
+        image: "{{{DOCKER_IMAGE}}}"
         command: ["node"]
         args: ["src/index.js"]
         env:

@@ -9,7 +9,7 @@ app.get('/health', function(req, res) {
     res.send({
         NAME,
         PORT,
-        message: "same3ni aloo"
+        message: "Hiiii"
     })
 })
 
