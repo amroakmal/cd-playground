@@ -8,7 +8,7 @@ metadata:
   #   nginx.ingress.kubernetes.io/proxy-body-size: 20m
 spec:
   rules:
-  - host: "{{{POSTS_SERVICE_DNS}}}.ahmedayoub.me"
+  - host: "{{{POSTS_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
     http:
       paths:
       - path: /
@@ -18,7 +18,7 @@ spec:
             name: pickify-posts-service-name
             port:
               number: 80
-  - host: "{{{VOTES_SERVICE_DNS}}}.ahmedayoub.me"
+  - host: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
     http:
       paths:
       - path: /

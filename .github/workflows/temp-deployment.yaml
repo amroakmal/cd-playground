@@ -36,6 +36,7 @@ jobs:
           # M3_PROJECT: m3ntorshipcom
           # M3_COMPONENET: fullstack
           # M3_ENVIRONMENT: dev
+          M3_HOST_NAME: pickify.net
           M3_REPLICAS: '3'
           POSTS_SERVICE_DNS: amr-posts
           VOTES_SERVICE_DNS: amr-votes
