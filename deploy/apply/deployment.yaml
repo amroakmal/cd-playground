@@ -66,5 +66,5 @@ spec:
         - name: PORT
           value: "3001"
         ports:
-          - containerPort: 3000
+          - containerPort: 3001
             protocol: TCP
