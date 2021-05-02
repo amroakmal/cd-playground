@@ -1,0 +1,38 @@
+# Service is created for each application INDIVIDUALLY. 
+# So if I have n applications running, I must have n services running where each service is resposnisble 
+# directly for one and only one application.
+# To determine how the service selects the application it will be responsible for, the application name
+# is provided for the service as a parameter name in the spec/selector/app
+# Here the application name is taken from the created pods: pod/label/app
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pickify-posts-service-name
+  namespace: pickify
+spec:
+  selector:
+    app: posts-service-pod-label
+  ports:
+    - name: pickify-posts-service-ports
+      protocol: TCP
+      # port of the service itself to use and contact it, i.e. the port where the service listens for incoming
+      # requests
+      port: 80
+      # port of the service will use by itself to forward the incoming requests to it(container port)
+      targetPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pickify-votes-service-name
+  namespace: pickify
+spec:
+  selector:
+    app: votes-service-pod-label
+  ports:
+    - name: pickify-votes-service-ports
+      protocol: TCP
+      port: 80
+      targetPort: 3000

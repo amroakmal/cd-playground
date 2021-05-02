@@ -1,0 +1,20 @@
+version: '3.9'  # optional since v1.27.0
+services:
+  posts:
+    image: simple-node-app:06
+    command: node src/index.js
+    network_mode: host
+    environment:
+      NAME: postsService
+      PORT: 3000
+      POSTS_URL: 'http://localhost:3000'
+      VOTES_URL: 'http://localhost:3001'
+  votes:
+    image: simple-node-app:06
+    command: node src/index.js
+    network_mode: host
+    environment:
+      NAME: votesService
+      PORT: 3001
+      POSTS_URL: 'http://localhost:3000'
+      VOTES_URL: 'http://localhost:3001'

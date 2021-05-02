@@ -1,0 +1,52 @@
+name: echo
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: azure/setup-kubectl@v1
+
+      - name: Kubectl configuration
+        shell: bash
+        run: |
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBE_CONFIG_DEV }}" | base64 -d -i > ~/.kube/config
+
+      - name: install moustache
+        run: |
+          curl -sSL https://git.io/get-mo -o mo
+          chmod +x mo
+          sudo mv mo /usr/local/bin/
+          echo "works" | mo
+
+      # deploy dev
+      - name: deploy-temp
+        env:
+          # M3_VERSION: ${{needs.prepare.outputs.version}}
+          M3_DEPLOYMENT_PATH: deploy
+          TEMP_DIR: temp
+          # M3_NAMESPACE: m3ntorshipcom-dev
+          # M3_PROJECT: m3ntorshipcom
+          # M3_COMPONENET: fullstack
+          # M3_ENVIRONMENT: dev
+          M3_REPLICAS: '3'
+          # M3_PORT_FRONTEND: '3000'
+          # M3_PORT_BACKEND: '1337'
+          # M3_SHA: ${{needs.prepare.outputs.sha}}
+        run: |
+          echo $M3_VERSION
+          mkdir -p $TEMP_DIR
+          for f in $M3_DEPLOYMENT_PATH/apply/*; do mo -u "$f" > $TEMP_DIR/"$(basename $f)"; done
+          kubectl apply -f $TEMP_DIR
+        # run: |
+        #   echo $M3_VERSION
+        #   mkdir -p $TEMP_DIR
+        #   mo -u deploy/temp.yaml > $TEMP_DIR/temp.yaml
+        #   kubectl apply -f $TEMP_DIR

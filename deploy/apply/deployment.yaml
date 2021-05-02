@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-service-name-for-posts-service
+  namespace: pickify
+  labels:
+    app: deployment-service-label-for-posts-service
+spec:
+  replicas: 3
+  # specify what are common things thar will be the same in the 3 created replicas/copies
+  selector:
+    matchLabels:
+      app: posts-service-pod-label
+  template:
+    metadata:
+      labels:
+        app: posts-service-pod-label
+    spec:
+      containers:
+      - name: posts-service-pod-container-name
+        image: 0024610/simple-node-app-docker-hub-image:00
+        command: ["node"]
+        args: ["src/index.js"]
+        env:
+        - name: NAME
+          value: posts-service-pod1-APP_NAME
+        ports:
+          - containerPort: 3000
+            protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-service-name-for-votes-service
+  namespace: pickify
+  labels:
+    app: deployment-service-label-for-votes-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: votes-service-pod-label
+  template:
+    metadata:
+      labels:
+        app: votes-service-pod-label
+    spec:
+      containers:
+      - name: votes-service-pod-container-name
+        image: simple-node-app:06
+        command: ["node"]
+        args: ["src/index.js"]
+        env:
+        - name: NAME
+          value: votes-service-pod1-APP_NAME
+        ports:
+          - containerPort: 3000
+            protocol: TCP

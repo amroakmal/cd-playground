@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service-name
+  namespace: pickify
+  # annotations:
+  #   kubernetes.io/ingress.class: nginx
+  #   nginx.ingress.kubernetes.io/proxy-body-size: 20m
+spec:
+  rules:
+  - host: "{{{DNS_NAME}}}.ahmedayoub.me"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pickify-posts-service-name
+            port:
+              number: 80
+  - host: "{{{DNS_NAME}}}.ahmedayoub.me"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: pickify-votes-service-name
+            port:
+              number: 80

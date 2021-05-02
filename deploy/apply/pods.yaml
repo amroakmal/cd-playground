@@ -1,0 +1,47 @@
+# Each pod must have a separate name from other pods, because pods see each other, so each of them
+# must have different name, and the pod name is specified in the metada/name.
+
+# Each pod can have more than one container, and each pod can have same container name and specs, as we said
+# above that pods see each other only from top view, but don't see each others' internal content aka containers.
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts-service-pod-metadata-name
+  namespace: pickify
+  labels:
+    app: posts-service-pod-label
+spec:
+  containers:
+    - name: posts-service-pod-container-name
+      image: simple-node-app:06
+      command: ["node"]
+      args: ["src/index.js"]
+      env:
+      - name: NAME
+        value: posts-service-pod1-APP_NAME
+      ports:
+        - containerPort: 3000
+          protocol: TCP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: votes-service-pod-metadata-name
+  namespace: pickify
+  labels:
+    app: votes-service-pod-label
+spec:
+  containers:
+    - name: votes-service-pod-container-name
+      image: simple-node-app:06
+      command: ["node"]
+      args: ["src/index.js"]
+      env:
+      - name: NAME
+        value: posts-service-pod2-APP_NAME
+      ports:
+        - containerPort: 3000
+          protocol: TCP
+---
