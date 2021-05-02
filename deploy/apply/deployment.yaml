@@ -26,6 +26,8 @@ spec:
           value: posts-service-pod1-APP_NAME
         - name: POSTS_URL
           value: "{{{POSTS_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
+        - name: VOTES_URL
+          value: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
         ports:
           - containerPort: 3000
             protocol: TCP
@@ -55,6 +57,8 @@ spec:
         env:
         - name: NAME
           value: votes-service-pod1-APP_NAME
+        - name: POSTS_URL
+          value: "{{{POSTS_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
         - name: VOTES_URL
           value: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
         ports:
