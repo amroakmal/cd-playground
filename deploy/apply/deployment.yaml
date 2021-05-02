@@ -29,7 +29,7 @@ spec:
         - name: VOTES_URL
           value: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
         - name: PORT
-          value: "3000"
+          value: "{{{POSTS_PORT}}}"
         ports:
           - containerPort: 3000
             protocol: TCP
@@ -64,7 +64,7 @@ spec:
         - name: VOTES_URL
           value: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
         - name: PORT
-          value: "3001"
+          value: "{{{VOTES_PORT}}}"
         ports:
-          - containerPort: 3001
+          - containerPort: 3000
             protocol: TCP

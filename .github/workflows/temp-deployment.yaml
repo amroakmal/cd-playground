@@ -40,7 +40,9 @@ jobs:
           M3_REPLICAS: '3'
           POSTS_SERVICE_DNS: amr-posts
           VOTES_SERVICE_DNS: amr-votes
-          DOCKER_IMAGE: 0024610/simple-node-app-docker-hub-image:02 
+          DOCKER_IMAGE: 0024610/simple-node-app-docker-hub-image:03
+          POSTS_PORT: 3000
+          VOTES_PORT: 3000
           # M3_PORT_FRONTEND: '3000'
           # M3_PORT_BACKEND: '1337'
           # M3_SHA: ${{needs.prepare.outputs.sha}}
