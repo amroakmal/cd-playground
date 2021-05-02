@@ -17,7 +17,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/.kube
-          echo "${{ secrets.KUBE_CONFIG_DEV }}" | base64 -d -i > ~/.kube/config
+          echo "${{ secrets.KUBE_CONFIG_TEMP }}" | base64 -d -i > ~/.kube/config
 
       - name: install moustache
         run: |
@@ -32,7 +32,7 @@ jobs:
           # M3_VERSION: ${{needs.prepare.outputs.version}}
           M3_DEPLOYMENT_PATH: deploy
           TEMP_DIR: temp
-          M3_NAMESPACE: pickify-namespace
+          M3_NAMESPACE: amr-pickify-namespace
           # M3_PROJECT: m3ntorshipcom
           # M3_COMPONENET: fullstack
           # M3_ENVIRONMENT: dev
