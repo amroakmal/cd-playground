@@ -3,9 +3,9 @@ kind: Ingress
 metadata:
   name: ingress-service-name
   namespace: "{{{M3_NAMESPACE}}}"
-  # annotations:
-  #   kubernetes.io/ingress.class: nginx
-  #   nginx.ingress.kubernetes.io/proxy-body-size: 20m
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-body-size: 20m
 spec:
   rules:
   - host: "{{{POSTS_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
