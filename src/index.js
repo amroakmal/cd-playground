@@ -16,8 +16,8 @@ app.get('/health', function(req, res) {
 app.get('/deep-health', async function(req, res) {
     try {
         //from docs and here: https://zetcode.com/javascript/axios/
-        const {data: res1} = await axios.get(`${process.env.POSTS_URL}:${PORT}/health`);
-        const {data: res2} = await axios.get(`${process.env.VOTES_URL}:${PORT}/health`);
+        const {data: res1} = await axios.get(`${process.env.POSTS_URL}/health`);
+        const {data: res2} = await axios.get(`${process.env.VOTES_URL}/health`);
         res.send({
             res1,
             res2

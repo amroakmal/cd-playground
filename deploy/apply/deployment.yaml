@@ -42,7 +42,7 @@ metadata:
   labels:
     app: deployment-service-label-for-votes-service
 spec:
-  replicas: 3
+  replicas: {{{M3}}}
   selector:
     matchLabels:
       app: votes-service-pod-label
