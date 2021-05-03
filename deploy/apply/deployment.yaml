@@ -6,7 +6,7 @@ metadata:
   labels:
     app: deployment-service-label-for-posts-service
 spec:
-  replicas: 3
+  replicas: {{{REPLICAS}}}
   # specify what are common things thar will be the same in the 3 created replicas/copies
   selector:
     matchLabels:
@@ -42,7 +42,7 @@ metadata:
   labels:
     app: deployment-service-label-for-votes-service
 spec:
-  replicas: {{{M3}}}
+  replicas: {{{REPLICAS}}}
   selector:
     matchLabels:
       app: votes-service-pod-label

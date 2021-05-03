@@ -43,7 +43,7 @@ jobs:
           DOCKER_IMAGE: 0024610/simple-node-app-docker-hub-image:04
           POSTS_PORT: 3000
           VOTES_PORT: 3000
-          Replica: 3
+          REPLICAS: 3
           # M3_PORT_FRONTEND: '3000'
           # M3_PORT_BACKEND: '1337'
           # M3_SHA: ${{needs.prepare.outputs.sha}}
