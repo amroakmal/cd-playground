@@ -25,9 +25,9 @@ spec:
         - name: NAME
           value: posts-service-pod1-APP_NAME
         - name: POSTS_URL
-          value: "{{{POSTS_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
+          value: "pickify-posts-service-name.{{{M3_NAMESPACE}}}"
         - name: VOTES_URL
-          value: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
+          value: "pickify-votes-service-name.{{{M3_NAMESPACE}}}"
         - name: PORT
           value: "{{{POSTS_PORT}}}"
         ports:
@@ -60,9 +60,9 @@ spec:
         - name: NAME
           value: votes-service-pod1-APP_NAME
         - name: POSTS_URL
-          value: "{{{POSTS_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
+          value: "pickify-posts-service-name.{{{M3_NAMESPACE}}}"
         - name: VOTES_URL
-          value: "{{{VOTES_SERVICE_DNS}}}.{{{M3_HOST_NAME}}}"
+          value: "pickify-votes-service-name.{{{M3_NAMESPACE}}}"
         - name: PORT
           value: "{{{VOTES_PORT}}}"
         ports:
